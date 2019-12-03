@@ -1,7 +1,7 @@
 ID_CURSO_TURMA,NOME_TURMA,SIGLA_CURSO,NOME_CURSO
 1,CC1,CC,Ciencia da Computacao
 2,CC2,CC,Ciencia da Computacao
-3,SI1,SI,
-4,SI2,SI,
-5,RC1,RC,
-6,RC2,RC,
+3,SI1,SI,Sistemas de Informacao
+4,SI2,SI,Sistemas de Informacao
+5,RC1,RC,Redes de Computadores
+6,RC2,RC,Redes de Computadores
