@@ -1,0 +1,27 @@
+{{ define "Index"}}
+	{{ template "Header"}}
+		{{ template "Menu" }}
+
+	<h2> Turmas Cadastradas </h2>
+	<table border="1">
+		<thead>
+			<tr>
+				<td>Id</td>
+				<td>Nome</td>
+				<td>Período</td>
+				<td>Turno</td>
+			</tr>
+		</thead>
+		<tbody>
+			{{ range . }}
+			<tr>
+				<td> {{ .IdTurma }}
+				<td> {{ .NomeTurma }}
+				<td> {{ .Periodo }}
+				<td> {{ .Turno }}
+			</tr>
+			{{ end }}
+		</tbody>
+	</table>
+	{{ template "Footer" }}
+{{ end }}

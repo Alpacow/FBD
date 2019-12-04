@@ -18,7 +18,7 @@ COPY TURMA (
 	NOME_TURMA, 
 	PERIODO, 
 	TURNO
-) FROM './../../../Users/augus/Desktop/FBD/Trabalho/CSVs/TURMA.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+) FROM '/home/flan/Documents/UFSM/FBD/Trabalho/CSVs/TURMA.csv' WITH DELIMITER=',' AND HEADER=TRUE;
 
 -----------------------------------------------------------------------------------------
 
@@ -34,7 +34,7 @@ COPY CURSO_TURMA (
 	NOME_TURMA, 
 	SIGLA_CURSO, 
 	NOME_CURSO
-) FROM './../../../Users/augus/Desktop/FBD/Trabalho/CSVs/CURSO_TURMA.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+) FROM '/home/flan/Documents/UFSM/FBD/Trabalho/CSVs/CURSO_TURMA.csv' WITH DELIMITER=',' AND HEADER=TRUE;
 
 -----------------------------------------------------------------------------------------
 
@@ -50,7 +50,7 @@ COPY DISCIPLINA_TURMA (
 	CODIGO, 
 	NOME_DISC, 
 	NOME_TURMA
-) FROM './../../../Users/augus/Desktop/FBD/Trabalho/CSVs/DISCIPLINA_TURMA.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+) FROM '/home/flan/Documents/UFSM/FBD/Trabalho/CSVs/DISCIPLINA_TURMA.csv' WITH DELIMITER=',' AND HEADER=TRUE;
 
 -----------------------------------------------------------------------------------------
 
@@ -64,7 +64,7 @@ COPY TURMA_DISCIPLINA (
 	ID_TURMA, 
 	NOME_TURMA, 
 	NOME_DISCIPLINA
-) FROM './../../../Users/augus/Desktop/FBD/Trabalho/CSVs/TURMA_DISCIPLINA.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+) FROM '/home/flan/Documents/UFSM/FBD/Trabalho/CSVs/TURMA_DISCIPLINA.csv' WITH DELIMITER=',' AND HEADER=TRUE;
 
 -----------------------------------------------------------------------------------------
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS fbd.PESSOA_DISCIPLINA (
 	NOME varchar,
 	ATIVO boolean,
 	ALUNO_PROFESSOR varchar,
-	PRIMARY KEY((MATRICULA), CODIGO_DISC, NOME)
+	PRIMARY KEY((MATRICULA), CODIGO_DISC, NOME, ALUNO_PROFESSOR)
 );
 
 COPY PESSOA_DISCIPLINA (
@@ -83,7 +83,7 @@ COPY PESSOA_DISCIPLINA (
 	NOME, 
 	ATIVO,
 	ALUNO_PROFESSOR
-) FROM './../../../Users/augus/Desktop/FBD/Trabalho/CSVs/PESSOA_DISCIPLINA.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+) FROM '/home/flan/Documents/UFSM/FBD/Trabalho/CSVs/PESSOA_DISCIPLINA.csv' WITH DELIMITER=',' AND HEADER=TRUE;
 
 -----------------------------------------------------------------------------------------
 
@@ -98,7 +98,7 @@ COPY DISCIPLINA_PESSOA (
 	CODIGO_DISC, 
 	MATRICULA, 
 	NOME_PESSOA
-) FROM './../../../Users/augus/Desktop/FBD/Trabalho/CSVs/DISCIPLINA_PESSOA.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+) FROM '/home/flan/Documents/UFSM/FBD/Trabalho/CSVs/DISCIPLINA_PESSOA.csv' WITH DELIMITER=',' AND HEADER=TRUE;
 
 -----------------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS fbd.DIARIO (
@@ -114,6 +114,6 @@ COPY DIARIO (
 	CODIGO_DISC, 
 	DATA_HORA, 
 	PRESENCA
-) FROM './../../../Users/augus/Desktop/FBD/Trabalho/CSVs/DIARIO.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+) FROM '/home/flan/Documents/UFSM/FBD/Trabalho/CSVs/DIARIO.csv' WITH DELIMITER=',' AND HEADER=TRUE;
 
 -----------------------------------------------------------------------------------------

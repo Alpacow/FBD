@@ -31,9 +31,27 @@ func createTurma(t Turma) {
 	fmt.Println(" **** Criando nova Turma ****\n", t)
 	if err := Session.Query("INSERT INTO fbd.turma (id_turma, nome_turma, periodo, turno) VALUES (?, ?, ?, ?);",
 		t.IdTurma, t.NomeTurma, t.Periodo, t.Turno).Exec(); err != nil {
-		fmt.Println("Erro ao iserir turma")
+		fmt.Println("Erro ao inserir turma")
 		fmt.Println(err)
 	}
+}
+
+func getTurma(id string) Turma {
+	fmt.Println("Selecionando uma turma")
+	var turma Turma
+	m := map[string]interface{}{}
+ 
+	iter := Session.Query("SELECT * FROM turma WHERE id_turma = ?", id).Iter()
+	for iter.MapScan(m) {
+		turma = Turma{
+			IdTurma:   m["id_turma"].(int),
+			NomeTurma: m["nome_turma"].(string),
+			Periodo:   m["periodo"].(string),
+			Turno:     m["turno"].(string),
+		}
+		m = map[string]interface{}{}
+	}
+	return turma
 }
 
 func getTurmas() []Turma {
@@ -71,16 +89,19 @@ func deleteTurma(id int) {
 	}
 }
 
+/*
 func main() {
-	turma1 := Turma{1, "CC1", "2019/1", "Manhã"}
-	turma2 := Turma{2, "CC2", "2019/2", "Tarde"}
-	createTurma(turma1)
+	//turma1 := Turma{1, "CC1", "2019/1", "Manhã"}
+	//turma2 := Turma{2, "CC2", "2019/2", "Tarde"}
+	//createTurma(turma1)
 	fmt.Println(getTurmas())
-	createTurma(turma2)
-	fmt.Println(getTurmas())
-	Turma3 := Turma{3, "SI", "2019/2", "Tarde"}
+	fmt.Println(getTurma(4))
+	//createTurma(turma2)
+	//fmt.Println(getTurmas())
+	/*Turma3 := Turma{3, "SI", "2019/2", "Tarde"}
 	updateTurma(Turma3)
 	fmt.Println(getTurmas())
 	deleteTurma(2)
 	fmt.Println(getTurmas())
 }
+*/
