@@ -1,0 +1,17 @@
+{{ define "TurmaEdit"}}
+	{{ template "Header"}}
+		{{ template "Menu" }}
+
+	<h2>Editar Turma</h2>
+	<form method="POST" action="update">
+		<input type="hidden" name="id" value="{{ .IdTurma }}"/><br/>
+		<label for="nome">Nome da Turma: </label>{{ .NomeTurma }}
+		<input type="hidden" name="nomeTurma" value="{{ .NomeTurma }}"/><br/>
+		<label for="periodo">Período</label>
+		<input type="text" name="periodo" id="periodo"  value="{{ .Periodo }}"/><br/>
+		<label for="turno">Turno</label>
+		<input type="text" name="turno" id="turno"  value="{{ .Turno }}"/><br/>
+		<input type="submit" value="Salvar Turma"/>
+	</form>
+	{{ template "Footer" }}
+{{ end }}

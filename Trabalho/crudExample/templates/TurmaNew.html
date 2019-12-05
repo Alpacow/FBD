@@ -1,0 +1,18 @@
+{{ define "TurmaNew"}}
+	{{ template "Header"}}
+		{{ template "Menu" }}
+
+	<h2>Nova Turma</h2>
+	<form method="POST" action="insert">
+		<label for="id">Id da Turma</label>
+		<input type="number" name="id" id="id"/><br/>
+		<label for="nome">Nome da Turma</label>
+		<input type="text" name="nomeTurma" id="nome"/><br/>
+		<label for="periodo">Período</label>
+		<input type="text" name="periodo" id="periodo"/><br/>
+		<label for="turno">Turno</label>
+		<input type="text" name="turno" id="turno"/><br/>
+		<input type="submit" value="Salvar Turma"/>
+	</form>
+	{{ template "Footer" }}
+{{ end }}

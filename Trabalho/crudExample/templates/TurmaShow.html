@@ -1,0 +1,12 @@
+{{ define "TurmaShow"}}
+	{{ template "Header"}}
+		{{ template "Menu" }}
+
+		<h2>Dados da Turma</h2>
+		<p> {{ .NomeTurma }} </p>
+		<p> {{ .Periodo }} </p>
+		<p> {{ .Turno }} </p>
+		<a href="/edit?id={{ .Id }}">Editar</a><br/>
+		<a href="/delete?id={{ .Id }}">Deletar</a>
+	{{ template "Footer" }}
+{{ end }}

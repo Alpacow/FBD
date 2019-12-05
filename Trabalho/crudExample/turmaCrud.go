@@ -36,7 +36,7 @@ func createTurma(t Turma) {
 	}
 }
 
-func getTurma(id string) Turma {
+func getTurmaById(id string) Turma {
 	fmt.Println("Selecionando uma turma")
 	var turma Turma
 	m := map[string]interface{}{}
@@ -73,9 +73,9 @@ func getTurmas() []Turma {
 }
 	
 func updateTurma(t Turma) {
-	fmt.Printf("Atualizando turma com id = %s\n", t.IdTurma)
-	if err := Session.Query("UPDATE turma SET nome_turma = ?, periodo = ?, turno = ? WHERE id_turma = ?",
-		t.NomeTurma, t.Periodo, t.Turno, t.IdTurma).Exec(); err != nil {
+	fmt.Printf("Atualizando turma com id = %s e nome_turma = %s\n", t.IdTurma)
+	if err := Session.Query("UPDATE turma SET periodo = ?, turno = ? WHERE id_turma = ? and nome_turma = ?",
+		t.Periodo, t.Turno, t.IdTurma, t.NomeTurma).Exec(); err != nil {
 		fmt.Println("Erro ao atualizar Turma")
 		fmt.Println(err)
 	}
