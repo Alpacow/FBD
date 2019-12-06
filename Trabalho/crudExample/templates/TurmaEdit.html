@@ -3,7 +3,7 @@
 		{{ template "Menu" }}
 
 	<h2>Editar Turma</h2>
-	<form method="POST" action="update">
+	<form method="POST" action="updateTurma">
 		<input type="hidden" name="id" value="{{ .IdTurma }}"/><br/>
 		<label for="nome">Nome da Turma: </label>{{ .NomeTurma }}
 		<input type="hidden" name="nomeTurma" value="{{ .NomeTurma }}"/><br/>

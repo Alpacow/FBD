@@ -10,15 +10,14 @@ import (
 var tmpl = template.Must(template.ParseGlob("templates/*"))
 
 // Função usada para renderizar o arquivo Index
-func Index(w http.ResponseWriter, r *http.Request) {
+func IndexTurma(w http.ResponseWriter, r *http.Request) {
 	var turmas = getTurmas()
 	// Abre a página Index e exibe todos os registrados na tela
-	fmt.Println(tmpl)
 	tmpl.ExecuteTemplate(w, "TurmaIndex", turmas)
 }
 
 // Função Show exibe apenas um resultado
-func Show(w http.ResponseWriter, r *http.Request) {
+func ShowTurma(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Query().Get("id")
 	var turma Turma = getTurmaById(id)
 	// Abre a página Index e exibe todos os registrados na tela
@@ -26,12 +25,12 @@ func Show(w http.ResponseWriter, r *http.Request) {
 }
 
 // Função New apenas exibe o formulário para inserir novos dados
-func New(w http.ResponseWriter, r *http.Request) {
+func NewTurma(w http.ResponseWriter, r *http.Request) {
 	tmpl.ExecuteTemplate(w, "TurmaNew", nil)
 }
 
 // Função Edit, edita os dados
-func Edit(w http.ResponseWriter, r *http.Request) {
+func EditTurma(w http.ResponseWriter, r *http.Request) {
 	// Pega o ID do parametro da URL
 	id := r.URL.Query().Get("id")
 	var turma Turma = getTurmaById(id)
@@ -40,9 +39,8 @@ func Edit(w http.ResponseWriter, r *http.Request) {
 }
 
 // Função Insert, insere valores no banco de dados
-func Insert(w http.ResponseWriter, r *http.Request) {
+func InsertTurma(w http.ResponseWriter, r *http.Request) {
 	// Verifica o METHOD do formulário passado
-	fmt.Println(r.Method)
 	if r.Method == "POST" {
 		// Pega os campos do formulário
 		var t Turma
@@ -61,7 +59,7 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 }
 
 // Função Update, atualiza valores no banco de dados
-func Update(w http.ResponseWriter, r *http.Request) {
+func UpdateTurma(w http.ResponseWriter, r *http.Request) {
 	// Verifica o METHOD do formulário passado
 	fmt.Println(r.Method)
 	if r.Method == "POST" {
@@ -83,7 +81,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 }
 
 // Função Delete, deleta valores no banco de dados
-func Delete(w http.ResponseWriter, r *http.Request) {
+func DeleteTurma(w http.ResponseWriter, r *http.Request) {
 	var err error
 	id, err := strconv.Atoi(r.FormValue("id"))
 	if err != nil {
@@ -94,21 +92,21 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", 301)
 }
 
+/*
 func main() {
 	// Gerencia as URLs
 
-	http.HandleFunc("/", Index)
-	http.HandleFunc("/show", Show)
-	http.HandleFunc("/new", New)
-	http.HandleFunc("/edit", Edit)
+	http.HandleFunc("/", IndexTurma)
+	http.HandleFunc("/show", ShowTurma)
+	http.HandleFunc("/new", NewTurma)
+	http.HandleFunc("/edit", EditTurma)
 
 	// Ações
-	http.HandleFunc("/insert", Insert)
-	http.HandleFunc("/update", Update)
-	http.HandleFunc("/delete", Delete)
+	http.HandleFunc("/insertTurma", InsertTurma)
+	http.HandleFunc("/updateTurma", UpdateTurma)
+	http.HandleFunc("/deleteTurma", DeleteTurma)
 
 	// Inicia o servidor na porta 9000
 	http.ListenAndServe(":9000", nil)
-	
 }
-
+*/

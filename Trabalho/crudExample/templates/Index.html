@@ -2,26 +2,40 @@
 	{{ template "Header"}}
 		{{ template "Menu" }}
 
-	<h2> Turmas Cadastradas </h2>
-	<table border="1">
-		<thead>
-			<tr>
-				<td>Id</td>
-				<td>Nome</td>
-				<td>Período</td>
-				<td>Turno</td>
-			</tr>
-		</thead>
-		<tbody>
-			{{ range . }}
-			<tr>
-				<td> {{ .IdTurma }}
-				<td> {{ .NomeTurma }}
-				<td> {{ .Periodo }}
-				<td> {{ .Turno }}
-			</tr>
+	<h2> Diário </h2>
+	<form method="POST" action="Index?matricula=201810002">
+		<label for="dthora">Código da Disciplina</label>
+		<select>
+			{{ range .Disciplinas }}
+			<option>{{ .CodigoDisc }}</option>
 			{{ end }}
-		</tbody>
-	</table>
+		</select>
+		<input type="submit" name="buscar" value="Buscar"/>
+	</form>
+	<form method="POST" action="insertDiario">
+		<label for="dthora">Data de Hoje</label>
+		<input type="date" data-date-inline-picker="true" name="datahora" id="dthora"/><br/>
+		<input type="text" name='CodigoDisc' value="{{ .CodigoSelect }}"/>
+		<table border="1">
+			<thead>
+				<tr>
+					<td>Nome Aluno</td>
+					<td colspan="2">Presença</td>
+				</tr>
+			</thead>
+			<tbody>
+				{{ range .Alunos }}
+				<tr>
+					<td> {{ .NomePessoa }} </td>
+					<td>
+						<input type="radio" name="{{ .NomePessoa }}" value="P" checked/>P
+						<input type="radio" name="{{ .NomePessoa }}" value="F"/> F
+					</td>
+				</tr>
+				{{ end }}
+			</tbody>
+		</table>
+		<input type="submit" value="Salvar Chamada"/>
+	</form>
 	{{ template "Footer" }}
 {{ end }}
